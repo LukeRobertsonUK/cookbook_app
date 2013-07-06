@@ -1,0 +1,23 @@
+<h1>Listing meal_categories</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @meal_categories.each do |meal_category| %>
+  <tr>
+    <td><%= meal_category.name %></td>
+    <td><%= link_to 'Show', meal_category %></td>
+    <td><%= link_to 'Edit', edit_meal_category_path(meal_category) %></td>
+    <td><%= link_to 'Destroy', meal_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Meal category', new_meal_category_path %>

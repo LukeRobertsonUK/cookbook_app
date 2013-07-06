@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  meal_category_id: 1
+  occaision: MyString
+  region_id: 1
+  image: MyString
+  instructions: MyString
+
+two:
+  name: MyString
+  meal_category_id: 1
+  occaision: MyString
+  region_id: 1
+  image: MyString
+  instructions: MyString
