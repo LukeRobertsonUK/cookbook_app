@@ -1,0 +1,5 @@
+  <%= link_to "#{author.name}", author %>
+  <%= link_to 'Edit', edit_author_path(author)%>
+  <%= link_to 'Delete', author, method: :delete, data: { confirm: 'Are you sure?' }%>
+  <br>
+  <br>

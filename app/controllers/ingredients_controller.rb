@@ -25,7 +25,6 @@ class IngredientsController < ApplicationController
   # GET /ingredients/new.json
   def new
     @ingredient = Ingredient.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @ingredient }
@@ -40,6 +39,7 @@ class IngredientsController < ApplicationController
   # POST /ingredients
   # POST /ingredients.json
   def create
+
     @ingredient = Ingredient.new(params[:ingredient])
 
     respond_to do |format|
@@ -56,6 +56,7 @@ class IngredientsController < ApplicationController
   # PUT /ingredients/1
   # PUT /ingredients/1.json
   def update
+
     @ingredient = Ingredient.find(params[:id])
 
     respond_to do |format|

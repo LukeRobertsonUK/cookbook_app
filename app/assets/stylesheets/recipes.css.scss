@@ -1,3 +1,107 @@
 // Place all the styles related to the Recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+$head_font: 'Montserrat Alternates', sans-serif;
+$script_font: 'Alex Brush', cursive;
+$ice: #E1E7E8;
+
+body {
+    background: $ice;
+}
+
+.container {
+  background: #FFFFFF;
+  padding: 10px;
+}
+
+.photo {
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+  margin: auto;
+  display: block;
+}
+
+h1 {
+  background: #A60349;
+  font-family: 'Alex Brush', cursive;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin: 0;
+  border-radius: 5px;
+}
+
+h2.show_title {
+  font-family: $script_font;
+  font-size: 70px;
+  color: #A60349;
+  font-weight: bold;
+}
+
+h3 {
+  margin: 0;
+  font-size: 30px;
+  font-family: $head_font;
+  text-align: left;
+  color: #003B61;
+}
+#mealtype {
+  margin: 0;
+  font-size: 30px;
+  font-family: $head_font;
+  text-align: left;
+  color: #003B61;
+}
+#region {
+  margin: 0;
+  font-size: 30px;
+  font-family: $head_font;
+  text-align: right;
+  color: #003B61;
+}
+
+#from {
+  font-size: 40px;
+  font-family: $head_font;
+  text-align: center;
+  background: #003B61;
+  color: #FFFFFF;
+  margin: 0;
+  font-weight: bold;
+}
+
+.occaision {
+  font-family: $script_font;
+  color: #003B61;
+  font-size: 30px;
+  text-align: center;
+}
+
+ul.ingredients {
+  margin-left: 0;
+  list-style: none;
+  border-top: 2px solid #A60349;
+  border-bottom: 2px solid #A60349;
+}
+
+li {
+  font-size: 80%;
+}
+
+.list_header {
+  margin-bottom: 0;
+  font-weight: bold;
+  color: #A60349;
+}
+
+.author {
+  color: #003B61;
+  font-size: 80%;
+  font-weight: bold;
+}
+
+
+

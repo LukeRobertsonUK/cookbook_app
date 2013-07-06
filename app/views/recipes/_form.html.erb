@@ -11,31 +11,52 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+    <div class="row">
+      <div class="span3">
+    <%= f.label :name %>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :meal_category_id %><br />
-    <%= f.number_field :meal_category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :occaision %><br />
+
+
+    <%= f.label :meal_category_id, "Meal Category" %>
+    <%= f.select(:meal_category_id, MealCategory.all.map {|c| [c.name, c.id]}) %>
+
+
+    <%= f.label :region_id, "Region" %>
+    <%= f.select(:region_id, Region.all.map {|r| [r.name, r.id]}) %>
+
+
+    <%= f.label :occaision, "Enjoy it..." %>
     <%= f.text_field :occaision %>
-  </div>
-  <div class="field">
-    <%= f.label :region_id %><br />
-    <%= f.number_field :region_id %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br />
+
+
+
+    <%= f.label :image %>
     <%= f.text_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :instructions %><br />
-    <%= f.text_field :instructions %>
-  </div>
-  <div class="actions">
+    <%= f.label :author_id, "Author" %>
+    <%= f.select(:author_id, Author.all.map {|a| [a.name, a.id]}) %>
+
+
+
+
+      </div>
+      <div class="span4 offset1">
+    <p>Select Ingredients</p>
+    <% IngredientCategory.all.each do |ingredient_category| %>
+      <% if ingredient_category.ingredients.any? %>
+      <p class = "list_header"><%= ingredient_category.name %></p>
+      <% end %>
+           <% ingredient_category.ingredients.each do |ingredient| %>
+             <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient) %>
+             <%= ingredient.name %>
+          <% end %>
+          <p></p>
+      <% end %>
+        <%= f.label :instructions, "Preparation instructions" %>
+        <%= f.text_field :instructions %>
+
+
     <%= f.submit %>
   </div>
+</div>
 <% end %>
+

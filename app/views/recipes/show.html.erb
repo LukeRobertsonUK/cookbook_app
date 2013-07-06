@@ -1,35 +1,42 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @recipe.name %>
-</p>
+  <div class='enclosure'>
+    <h2 class="show_title"><%= @recipe.name %></h2>
+    <div class="row">
+      <div class="span5">
+          <h3 id="mealtype"><%= @recipe.meal_category.name %></h3>
+          <h4 id= "from">from</h4>
+           <h3 id="region"><%= @recipe.region.name %></h3>
+           <p class="occaision">Enjoy it
+            <%= @recipe.occaision %>
+           </p>
+           <p class="list_header">Ingredents</p>
+              <ul class="ingredients">
+           <% @recipe.ingredients.each do |ingredient|%>
+                <li><%= ingredient.name %></li>
 
-<p>
-  <b>Meal category:</b>
-  <%= @recipe.meal_category_id %>
-</p>
+            <% end %>
+               </ul>
+               <% if @recipe.author %>
+            <p class="author">
+              <%="This recipe was submitted by #{@recipe.author.name} on #{@recipe.created_at.to_date} and was last updated #{distance_of_time_in_words(Time.now, @recipe.updated_at)} ago." %>
+            </p>
+          <% end %>
+          <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+          <%= link_to 'Back', recipes_path %>
+      </div>
 
-<p>
-  <b>Occaision:</b>
-  <%= @recipe.occaision %>
-</p>
-
-<p>
-  <b>Region:</b>
-  <%= @recipe.region_id %>
-</p>
-
-<p>
-  <b>Image:</b>
-  <%= @recipe.image %>
-</p>
-
-<p>
-  <b>Instructions:</b>
-  <%= @recipe.instructions %>
-</p>
+      <div class="span6">
+          <p>
+            <%=image_tag @recipe.image, size: '300x300', class: "photo" %>
+            <p class="list_header">Instructions</p>
+            <%= @recipe.instructions %>
+          </p>
+      </div>
+    </div>
 
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+
+</div>
+
+
+

@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
   # GET /recipes.json
   def index
     @recipes = Recipe.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @recipes }
@@ -56,6 +55,7 @@ class RecipesController < ApplicationController
   # PUT /recipes/1
   # PUT /recipes/1.json
   def update
+     params[:recipe][:ingredient_ids] ||= []
     @recipe = Recipe.find(params[:id])
 
     respond_to do |format|

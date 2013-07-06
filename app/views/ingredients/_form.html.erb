@@ -16,8 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :ingredient_category_id %><br />
-    <%= f.number_field :ingredient_category_id %>
+    <%= f.label :ingredient_category_id, "Ingredient Category" %><br />
+    <%= f.select(:ingredient_category_id, IngredientCategory.all.map {|c| [c.name, c.id]}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,33 +1,19 @@
-<h1>Listing recipes</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Meal category</th>
-    <th>Occaision</th>
-    <th>Region</th>
-    <th>Image</th>
-    <th>Instructions</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @recipes.each do |recipe| %>
-  <tr>
-    <td><%= recipe.name %></td>
-    <td><%= recipe.meal_category_id %></td>
-    <td><%= recipe.occaision %></td>
-    <td><%= recipe.region_id %></td>
-    <td><%= recipe.image %></td>
-    <td><%= recipe.instructions %></td>
-    <td><%= link_to 'Show', recipe %></td>
-    <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-    <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<h2>Recipes</h2>
 
 <%= link_to 'New Recipe', new_recipe_path %>
+<br>
+
+<% MealCategory.all.each do |category| %>
+    <h3><%= category.name.pluralize %></h3>
+    <% category.recipes.order('name').each do |recipe| %>
+        <%= recipe.name %>
+        <%= recipe.meal_category.name %>
+        <%= recipe.region.name %>
+        <%= link_to 'Show', recipe %>
+        <%= link_to 'Edit', edit_recipe_path(recipe) %>
+        <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+<% end %>
+
+
+
