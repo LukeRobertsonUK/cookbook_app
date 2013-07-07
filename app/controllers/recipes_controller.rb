@@ -2,8 +2,14 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
-    respond_to do |format|
+    @recipes = case
+      when params[:meal_category_id].nil?
+        @recipes =  Recipe.all
+      else
+        @recipes = Recipe.where(meal_category_id: params[:meal_category_id], author_id: params[:author_id], region_id: params[:region_id]).all
+      end
+
+      respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @recipes }
     end

@@ -1,23 +1,12 @@
-<h1>Listing meal_categories</h1>
+<h3>Meal Categories</h3>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul class="index">
 <% @meal_categories.each do |meal_category| %>
-  <tr>
-    <td><%= meal_category.name %></td>
-    <td><%= link_to 'Show', meal_category %></td>
-    <td><%= link_to 'Edit', edit_meal_category_path(meal_category) %></td>
-    <td><%= link_to 'Destroy', meal_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <li class="list_header"><%= link_to meal_category.name, meal_category %> | <%= link_to 'Edit', edit_meal_category_path(meal_category) %> | <%= link_to 'Delete', meal_category, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
 <% end %>
-</table>
+</ul>
 
-<br />
 
-<%= link_to 'New Meal category', new_meal_category_path %>
+
+ <%= link_to 'Back', manage_path %> | <%= link_to 'New Meal Category', new_meal_category_path %>

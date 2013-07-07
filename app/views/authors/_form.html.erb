@@ -1,0 +1,41 @@
+<%= form_for(@author) do |f| %>
+  <% if @author.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@author.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% @author.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="row">
+      <div class="span3">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email_address, "Email" %>
+    <%= f.text_field :email_address %>
+
+    <%= f.label :image, "Photo" %>
+    <%= f.text_field :image %>
+
+
+    <% if @author.persisted? %>
+      <%=image_tag @author.image, size: '300x300', class: "author_photo_small" %>
+    <% end %>
+
+
+      </div>
+      <div class="span4 offset1">
+
+        <%= f.label :biography, "Biography" %>
+        <%= f.text_area :biography, id: "biography" %>
+
+    <%= f.submit %>
+  </div>
+</div>
+<% end %>
+

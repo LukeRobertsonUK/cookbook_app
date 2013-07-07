@@ -1,19 +1,50 @@
-<h2>Recipes</h2>
+<h2 class="show_title">Recipes</h2>
 
 <%= link_to 'New Recipe', new_recipe_path %>
 <br>
 
-<% MealCategory.all.each do |category| %>
-    <h3><%= category.name.pluralize %></h3>
-    <% category.recipes.order('name').each do |recipe| %>
-        <%= recipe.name %>
-        <%= recipe.meal_category.name %>
-        <%= recipe.region.name %>
-        <%= link_to 'Show', recipe %>
+<div class="row">
+    <div class="span8">
+      <% grouped_recipes = @recipes.group_by(&:meal_category_id) %>
+      <% MealCategory.all.each do |category| %>
+      <h3><%= category.name.pluralize %></h3>
+      <% recipes = grouped_recipes[category.id] %>
+      <% if recipes %>
+      <% recipes.each do |recipe| %>
+      <p class="list_header">
+        <%= link_to recipe.name, recipe %>
+        </p>
+        <p class="index_page">
+          <% if recipe.author %>
+          <%= "by #{recipe.author.name}." %>
+          <% end %>
+          <%= "Enjoy it #{recipe.occaision}" %>
         <%= link_to 'Edit', edit_recipe_path(recipe) %>
         <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-<% end %>
+      </p>
+      <% end %>
+      <% end %>
+ 
+      <% end %>
+    </div>
+    <div class="span3">
+     <div class="filter_box">
+        <%= form_tag(recipes_path, method:"get") do %>
+          <%= label_tag :meal_category_id, "Meal Category" %>
+          <%= select_tag "meal_category_id", options_for_select(MealCategory.all.collect{|a| [a.name, a.id]}) %>
+          <br>
+          <%= label_tag :region_id, "Region" %>
+          <%= select_tag "region_id", options_for_select(Region.all.collect{|a| [a.name, a.id]}) %>
+          <br>
+          <%= label_tag :author_id, "Author" %>
+          <%= select_tag "author_id", options_for_select(Author.all.collect{|a| [a.name, a.id]}) %>
+          <br>
+          <%= submit_tag("Filter") %>
+        <% end %>
 
 
+
+     </div>
+    </div>
+  </div>
 

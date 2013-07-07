@@ -1,0 +1,25 @@
+
+  <div class='enclosure'>
+    <h2 class="show_title"><%= @author.name %></h2>
+    <div class="row">
+      <div class="span6">
+          <p>
+            <%= @author.biography %>
+          </p>
+          <%= link_to 'Edit', edit_author_path(@author) %> |
+          <%= link_to 'Back', authors_path %>
+      </div>
+
+      <div class="span6">
+        <div class="large_photo_crop">
+            <%=image_tag @author.image, class: "author_photo" %>
+          </div>
+            <p>
+            <%=mail_to @author.email_address %>
+            </p>
+      </div>
+    </div>
+
+
+
+</div>

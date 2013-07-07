@@ -26,7 +26,7 @@
 
 
     <%= f.label :occaision, "Enjoy it..." %>
-    <%= f.text_field :occaision %>
+    <%= f.text_field :occaision, class: "input_text" %>
 
 
 
@@ -34,25 +34,26 @@
     <%= f.text_field :image %>
     <%= f.label :author_id, "Author" %>
     <%= f.select(:author_id, Author.all.map {|a| [a.name, a.id]}) %>
-
-
+    <% if @recipe.persisted? %>
+      <%=image_tag @recipe.image, size: '300x300', class: "photo_small" %>
+    <% end %>
 
 
       </div>
       <div class="span4 offset1">
-    <p>Select Ingredients</p>
+
     <% IngredientCategory.all.each do |ingredient_category| %>
       <% if ingredient_category.ingredients.any? %>
-      <p class = "list_header"><%= ingredient_category.name %></p>
+      <p class = "list_header"><%= ingredient_category.name.pluralize %></p>
       <% end %>
            <% ingredient_category.ingredients.each do |ingredient| %>
-             <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient) %>
+             <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), class: "check" %>
              <%= ingredient.name %>
           <% end %>
           <p></p>
       <% end %>
         <%= f.label :instructions, "Preparation instructions" %>
-        <%= f.text_field :instructions %>
+        <%= f.text_area :instructions, id: "instructions" %>
 
 
     <%= f.submit %>

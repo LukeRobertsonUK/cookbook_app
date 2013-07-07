@@ -1,23 +1,10 @@
-<h1>Listing regions</h1>
+<h3>Cuisine Regions</h3>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul class = "index">
 <% @regions.each do |region| %>
-  <tr>
-    <td><%= region.name %></td>
-    <td><%= link_to 'Show', region %></td>
-    <td><%= link_to 'Edit', edit_region_path(region) %></td>
-    <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <li class="list_header"><%= link_to region.name, region %> | <%= link_to 'Edit', edit_region_path(region) %> | <%= link_to 'Delete', region, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 <% end %>
-</table>
+</ul>
 
-<br />
 
-<%= link_to 'New Region', new_region_path %>
+ <%= link_to 'Back', manage_path %> | <%= link_to 'New Region', new_region_path %>

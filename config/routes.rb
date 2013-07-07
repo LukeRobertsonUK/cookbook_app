@@ -17,6 +17,7 @@ CookbookApp::Application.routes.draw do
   resources :authors
 
 
+  get '/manage', to: "manage#manage"
 
   root to: 'recipes#index'
 end

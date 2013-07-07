@@ -2,7 +2,7 @@
   <div class='enclosure'>
     <h2 class="show_title"><%= @recipe.name %></h2>
     <div class="row">
-      <div class="span5">
+      <div class="span6">
           <h3 id="mealtype"><%= @recipe.meal_category.name %></h3>
           <h4 id= "from">from</h4>
            <h3 id="region"><%= @recipe.region.name %></h3>
@@ -16,21 +16,24 @@
 
             <% end %>
                </ul>
-               <% if @recipe.author %>
-            <p class="author">
-              <%="This recipe was submitted by #{@recipe.author.name} on #{@recipe.created_at.to_date} and was last updated #{distance_of_time_in_words(Time.now, @recipe.updated_at)} ago." %>
-            </p>
-          <% end %>
+              <p class="author">Submitted
+              <% if @recipe.author %>
+
+              <%=" by #{@recipe.author.name}" %>
+              <% end %>
+              <%= "on #{@recipe.created_at.to_date} and last updated #{distance_of_time_in_words(Time.now, @recipe.updated_at)} ago." %>
+              </p>
           <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
           <%= link_to 'Back', recipes_path %>
       </div>
 
       <div class="span6">
-          <p>
             <%=image_tag @recipe.image, size: '300x300', class: "photo" %>
+            <br>
             <p class="list_header">Instructions</p>
+            <p>
             <%= @recipe.instructions %>
-          </p>
+            </p>
       </div>
     </div>
 
