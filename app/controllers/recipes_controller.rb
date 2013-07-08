@@ -1,4 +1,7 @@
 class RecipesController < ApplicationController
+
+  helper CostHelper
+
   # GET /recipes
   # GET /recipes.json
   def index

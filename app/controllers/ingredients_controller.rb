@@ -1,6 +1,9 @@
 class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.json
+
+  helper CostHelper
+
   def index
     @ingredients = Ingredient.all
 

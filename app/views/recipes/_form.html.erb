@@ -16,19 +16,14 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
 
-
     <%= f.label :meal_category_id, "Meal Category" %>
     <%= f.select(:meal_category_id, MealCategory.all.map {|c| [c.name, c.id]}) %>
-
 
     <%= f.label :region_id, "Region" %>
     <%= f.select(:region_id, Region.all.map {|r| [r.name, r.id]}) %>
 
-
     <%= f.label :occaision, "Enjoy it..." %>
     <%= f.text_field :occaision, class: "input_text" %>
-
-
 
     <%= f.label :image %>
     <%= f.text_field :image %>
@@ -47,7 +42,7 @@
       <p class = "list_header"><%= ingredient_category.name.pluralize %></p>
       <% end %>
            <% ingredient_category.ingredients.each do |ingredient| %>
-             <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), class: "check" %>
+             <%= checkbox(@recipe, ingredient) %>
              <%= ingredient.name %>
           <% end %>
           <p></p>
