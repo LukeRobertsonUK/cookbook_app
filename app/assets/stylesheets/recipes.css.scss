@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+//'Numans'
+
+//'Alex Brush'
+
 
 $head_font: 'Numans', sans-serif;
 $script_font: 'Alex Brush', cursive;
@@ -44,6 +48,8 @@ h1 {
   color: #FFFFFF;
   margin: 0;
   border-radius: 5px;
+  text-align: center;
+  font-size: 60px;
 }
 
 h2.show_title {
