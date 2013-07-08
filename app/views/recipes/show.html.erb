@@ -18,7 +18,8 @@
                </ul>
               <p class="author">Submitted
               <% if @recipe.author %>
-              <%=" by #{@recipe.author.name}" %>
+              by
+              <%= link_to @recipe.author.name, @recipe.author %>
               <% end %>
               <%= "on #{@recipe.created_at.to_date} and last updated #{distance_of_time_in_words(Time.now, @recipe.updated_at)} ago." %>
               </p>

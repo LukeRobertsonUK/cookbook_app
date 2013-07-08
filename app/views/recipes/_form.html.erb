@@ -37,15 +37,17 @@
 
 
       </div>
-      <div class="span4 offset1">
+      <div class="span6 offset1">
 
     <% IngredientCategory.all.each do |ingredient_category| %>
       <% if ingredient_category.ingredients.any? %>
       <p class = "list_header"><%= ingredient_category.name.pluralize %></p>
       <% end %>
            <% ingredient_category.ingredients.each do |ingredient| %>
+            <div class="ingredients_check_box">
              <%= checkbox(@recipe, ingredient) %>
              <%= ingredient.name %>
+           </div>
           <% end %>
           <p></p>
       <% end %>
