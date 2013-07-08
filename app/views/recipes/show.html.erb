@@ -28,7 +28,7 @@
       </div>
 
       <div class="span6">
-            <%=image_tag @recipe.image, size: '300x300', class: "photo" %>
+            <%= image_tag @recipe.image, size: '300x300', class: "photo"  if @recipe.image %>
             <br>
             <p class="list_header">Instructions</p>
             <p>
