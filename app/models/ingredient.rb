@@ -1,7 +1,8 @@
 class Ingredient < ActiveRecord::Base
-  attr_accessible :ingredient_category_id, :name, :recipes
+  attr_accessible :ingredient_category_id, :name, :ingredients_recipes, :recipes
     belongs_to :ingredient_category
-    has_and_belongs_to_many :recipes
+    has_many :ingredients_recipes
+    has_many :recipes, through: :ingredients_recipes
 
 validates :name, presence: true
 validates :name, uniqueness: true

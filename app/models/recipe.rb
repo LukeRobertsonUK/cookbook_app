@@ -1,9 +1,11 @@
 class Recipe < ActiveRecord::Base
-  attr_accessible :image, :instructions, :meal_category_id, :name, :occaision, :region_id, :ingredient_ids, :author_id
+  attr_accessible :image, :instructions, :meal_category_id, :name, :occaision, :region_id, :ingredient_ids, :author_id, :ingredients, :ingredients_recipes
   belongs_to :region
   belongs_to :meal_category
   belongs_to :author
-  has_and_belongs_to_many :ingredients
+  has_many :ingredients_recipes
+  has_many :ingredients, :through => :ingredients_recipes
+
   accepts_nested_attributes_for :ingredients
 
   validates :name, uniqueness: true
