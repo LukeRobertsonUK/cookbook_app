@@ -30,7 +30,9 @@
     <%= f.label :author_id, "Author" %>
     <%= f.select(:author_id, Author.all.map {|a| [a.name, a.id]}) %>
     <% if @recipe.persisted? %>
-      <%=image_tag @recipe.image, size: '300x300', class: "photo_small" if @recipe.image %>
+      <% if @recipe.image.size > 0 %>
+      <%=image_tag @recipe.image, size: '300x300', class: "photo_small" %>
+      <% end %>
     <% end %>
 
 

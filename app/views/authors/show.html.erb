@@ -12,7 +12,9 @@
 
       <div class="span6">
         <div class="large_photo_crop">
+          <% if @author.image.size >0 %>
             <%=image_tag @author.image, class: "author_photo" %>
+              <% end %>
           </div>
             <p>
             <%=mail_to @author.email_address %>

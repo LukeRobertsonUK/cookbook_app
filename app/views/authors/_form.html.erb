@@ -24,7 +24,9 @@
 
 
     <% if @author.persisted? %>
+      <% if @author.image.size >0%>
       <%=image_tag @author.image, size: '300x300', class: "author_photo_small" %>
+        <%end%>
     <% end %>
 
 
