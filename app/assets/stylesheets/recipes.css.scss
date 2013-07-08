@@ -16,6 +16,14 @@ $main_navy:#003B61;
 
 
 
+#error_explanation {
+  color: red;
+}
+
+#notice {
+  color: green;
+}
+
 body {
     background: $ice;
 }

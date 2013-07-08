@@ -1,7 +1,8 @@
 <%= form_for(@meal_category) do |f| %>
   <% if @meal_category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@meal_category.errors.count, "error") %> prohibited this meal_category from being saved:</h2>
+      <h5>
+        Oops!<%= pluralize(@meal_category.errors.count, "error") %> prohibited this meal_category from being saved:</h5>
 
       <ul>
       <% @meal_category.errors.full_messages.each do |msg| %>
