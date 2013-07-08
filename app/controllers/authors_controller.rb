@@ -15,8 +15,6 @@ class AuthorsController < ApplicationController
   def create
     @author = Author.new(params[:author])
     @author.save
-
-
   respond_to do |format|
       if @author.save
         format.html { redirect_to @author, notice: 'Author was successfully created.' }
