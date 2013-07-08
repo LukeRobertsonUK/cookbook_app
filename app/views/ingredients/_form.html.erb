@@ -12,11 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :ingredient_category_id, "Ingredient Category" %><br />
+    <%= f.label :standard_measure, "Standard Measure" %>
+    <%= f.text_field :standard_measure %>
+  </div>
+  <div class="field">
+    <%= f.label :ingredient_category_id, "Ingredient Category" %>
     <%= f.select(:ingredient_category_id, IngredientCategory.all.map {|c| [c.name, c.id]}) %>
   </div>
   <div class="actions">
