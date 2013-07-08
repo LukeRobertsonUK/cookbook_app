@@ -7,7 +7,9 @@
     <div class="span8">
       <% grouped_recipes = @recipes.group_by(&:meal_category_id) %>
       <% MealCategory.all.each do |category| %>
+          <% if grouped_recipes[category.id] %>
       <h3><%= category.name.pluralize %></h3>
+            <% end %>
       <% recipes = grouped_recipes[category.id] %>
       <% if recipes %>
       <% recipes.each do |recipe| %>
@@ -34,13 +36,13 @@
      <div class="filter_box">
         <%= form_tag(recipes_path, method:"get") do %>
           <%= label_tag :meal_category_id, "Meal Category" %>
-          <%= select_tag "meal_category_id", options_for_select(MealCategory.all.collect{|a| [a.name, a.id]}) %>
+          <%= select_tag "meal_category_id", options_for_select(MealCategory.all.collect{|a| [a.name, a.id]}), options = {include_blank: 'All'} %>
           <br>
           <%= label_tag :region_id, "Region" %>
-          <%= select_tag "region_id", options_for_select(Region.all.collect{|a| [a.name, a.id]}) %>
+          <%= select_tag "region_id", options_for_select(Region.all.collect{|a| [a.name, a.id]}), options = {include_blank: 'All'}  %>
           <br>
           <%= label_tag :author_id, "Author" %>
-          <%= select_tag "author_id", options_for_select(Author.all.collect{|a| [a.name, a.id]}) %>
+          <%= select_tag "author_id", options_for_select(Author.all.collect{|a| [a.name, a.id]}), options = {include_blank: 'All'} %>
           <br>
           <%= submit_tag("Filter") %>
         <% end %>

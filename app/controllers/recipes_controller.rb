@@ -5,12 +5,11 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = case
-      when params[:meal_category_id].nil?
-        @recipes =  Recipe.all
-      else
-        @recipes = Recipe.where(meal_category_id: params[:meal_category_id], author_id: params[:author_id], region_id: params[:region_id]).all
-      end
+      where_hash = {}
+      where_hash[:meal_category_id] = params[:meal_category_id] if params[:meal_category_id].blank?
+      where_hash[:author_id] = params[:author_id] if params[:author_id].blank?
+      where_hash[:region_id] = params[:region_id] if params[:region_id].blank?
+      @recipes = where_hash.any? ? Recipe.where(where_hash) : Recipe.all
 
       respond_to do |format|
       format.html # index.html.erb
