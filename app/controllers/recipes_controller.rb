@@ -6,11 +6,10 @@ class RecipesController < ApplicationController
   # GET /recipes.json
   def index
       where_hash = {}
-      where_hash[:meal_category_id] = params[:meal_category_id] if params[:meal_category_id].blank?
-      where_hash[:author_id] = params[:author_id] if params[:author_id].blank?
-      where_hash[:region_id] = params[:region_id] if params[:region_id].blank?
+      where_hash[:meal_category_id] = params[:meal_category_id] unless params[:meal_category_id].blank?
+      where_hash[:author_id] = params[:author_id] unless params[:author_id].blank?
+      where_hash[:region_id] = params[:region_id] unless params[:region_id].blank?
       @recipes = where_hash.any? ? Recipe.where(where_hash) : Recipe.all
-
       respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @recipes }

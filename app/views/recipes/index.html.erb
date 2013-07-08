@@ -5,6 +5,11 @@
 
 <div class="row">
     <div class="span8">
+
+        <% if @recipes.blank? %>
+          <h5 class="no_results">No recipes match your search criteria</h5>
+        <%end%>
+
       <% grouped_recipes = @recipes.group_by(&:meal_category_id) %>
       <% MealCategory.all.each do |category| %>
           <% if grouped_recipes[category.id] %>
