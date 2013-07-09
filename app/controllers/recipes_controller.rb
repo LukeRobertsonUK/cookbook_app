@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
-  # before_filter :authenticate
+  before_filter :authenticate, only: [:show]
   helper CostHelper
 
   # GET /recipes

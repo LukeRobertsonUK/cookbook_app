@@ -20,7 +20,7 @@ def logged_in?
   private
   def authenticate
     unless logged_in?
-      flash[:error] = "You must be logged in to access this section of the site"
+      flash[:error] = "Please login or register as a new user to access our tasty recipes!"
       redirect_to login_url
     end
   end

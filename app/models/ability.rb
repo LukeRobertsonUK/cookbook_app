@@ -7,7 +7,9 @@ class Ability
         can :manage, :all
     else
         can :create, User
-        can :read, User
+        can :manage, User do |u|
+            u.id == user.id
+            end
         can :read, Recipe
         can :read, Region
         can :read, MealCategory
