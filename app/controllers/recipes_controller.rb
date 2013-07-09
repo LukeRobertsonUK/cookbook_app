@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
 
+  # before_filter :authenticate
   helper CostHelper
 
   # GET /recipes

@@ -1,4 +1,21 @@
 CookbookApp::Application.routes.draw do
+
+  get "sessions/new"
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
+  resources :users
+
+  resources :sessions, only: [:create, :destroy]
+
+  get "users/index"
+
+  get "users/new"
+
+  get "users/create"
+
   resources :ingredient_categories
 
 
@@ -20,4 +37,7 @@ CookbookApp::Application.routes.draw do
   get '/manage', to: "manage#manage"
 
   root to: 'recipes#index'
+
+get '/login', to: "sessions#new"
+
 end
