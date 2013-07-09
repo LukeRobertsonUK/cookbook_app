@@ -32,9 +32,12 @@
           <li><%= link_to("Register As New User", new_user_path) %></li>
           <%end%>
           <% if session[:user_id] %>
-          <% if can? :manage, User %>
+          <% if can? :edit, User %>
           <li><%= link_to("Edit Your Details", edit_user_path(session[:user_id]))%><li>
             <%end%>
+            <%end%>
+            <% if can? :manage, User %>
+            <li><%= link_to("Users Admin", users_path) %><li>
             <%end%>
         </ul>
       </div>

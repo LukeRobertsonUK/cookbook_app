@@ -7,7 +7,7 @@ class Ability
         can :manage, :all
     else
         can :create, User
-        can :manage, User do |u|
+        can :edit, User do |u|
             u.id == user.id
             end
         can :read, Recipe

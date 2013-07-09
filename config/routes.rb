@@ -10,11 +10,6 @@ CookbookApp::Application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
 
-  get "users/index"
-
-  get "users/new"
-
-  get "users/create"
 
   resources :ingredient_categories
 
