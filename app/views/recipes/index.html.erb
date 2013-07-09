@@ -1,6 +1,7 @@
 <h2 class="show_title">Recipes</h2>
-
+<% if can? :create, Recipe %>
 <%= link_to 'New Recipe', new_recipe_path %>
+<% end %>
 <br>
 
 <div class="row">
@@ -29,8 +30,12 @@
           <% if recipe.occaision.length > 0 %>
           <%= "Enjoy it #{recipe.occaision}" %>
           <%end%>
-        <%= link_to 'Edit', edit_recipe_path(recipe) %> |
-        <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if can? :edit, Recipe %>
+          <%= link_to 'Edit', edit_recipe_path(recipe) %> |
+        <% end %>
+        <% if can? :destroy, Recipe %>
+          <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end%>
       </p>
       <% end %>
       <% end %>

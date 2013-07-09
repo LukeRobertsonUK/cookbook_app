@@ -2,6 +2,10 @@
       <%= link_to "#{author.name}", author %>
     </p>
     <p class="index_page">
+   <% if can? :edit, Author%>
   <%= link_to 'Edit', edit_author_path(author)%> |
+  <% end %>
+  <% if can? :destroy, Author %>
   <%= link_to 'Delete', author, method: :delete, data: { confirm: 'Are you sure?' }%>
+  <% end %>
   </p>

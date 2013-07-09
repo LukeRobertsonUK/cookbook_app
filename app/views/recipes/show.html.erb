@@ -23,7 +23,9 @@
               <% end %>
               <%= "on #{@recipe.created_at.to_date} and last updated #{distance_of_time_in_words(Time.now, @recipe.updated_at)} ago." %>
               </p>
+           <% if can? :edit, Recipe %>
           <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+            <%end%>
           <%= link_to 'Back', recipes_path %>
       </div>
 

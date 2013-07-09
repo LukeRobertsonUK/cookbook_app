@@ -24,7 +24,9 @@
         <ul class="nav">
           <li><%= link_to('Recipes', recipes_path) %></li>
           <li><%= link_to('Authors', authors_path) %></li>
+          <% if can? :manage, Ingredient, IngredientCategory, Region %>
           <li><%= link_to('Manage Ingredients and Categories', manage_path) %></li>
+          <%end%>
           <li><%= link_to("Login", sessions_new_path) %></li>
           <li><%= link_to("Register New User", new_user_path) %></li>
         </ul>

@@ -1,6 +1,8 @@
 class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.json
+  load_and_authorize_resource
+
 
   helper CostHelper
 

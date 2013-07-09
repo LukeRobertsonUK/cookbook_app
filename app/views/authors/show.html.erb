@@ -6,7 +6,9 @@
           <p>
             <%= @author.biography %>
           </p>
+          <% if can? :edit, Author %>
           <%= link_to 'Edit', edit_author_path(@author) %> |
+          <% end %>
           <%= link_to 'Back', authors_path %>
       </div>
 

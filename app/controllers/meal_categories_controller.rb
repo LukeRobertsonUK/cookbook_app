@@ -1,4 +1,6 @@
 class MealCategoriesController < ApplicationController
+
+load_and_authorize_resource
   # GET /meal_categories
   # GET /meal_categories.json
   def index
