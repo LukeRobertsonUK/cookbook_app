@@ -11,10 +11,6 @@ class Ability
             u.id == user.id
             end
         can :read, Recipe
-        can :read, Region
-        can :read, MealCategory
-        can :read, IngredientCategory
-        can :read, Ingredient
         can :read, Author
 
     end

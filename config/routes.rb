@@ -23,8 +23,11 @@ CookbookApp::Application.routes.draw do
   resources :meal_categories
 
 
-  resources :recipes
-
+  resources :recipes do
+    collection do
+      match 'search', to: 'recipes#search', via: [:get, :post], as: :search
+    end
+  end
 
   resources :authors
 

@@ -5,17 +5,32 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   # GET /recipes.json
-  def index
-      where_hash = {}
-      where_hash[:meal_category_id] = params[:meal_category_id] unless params[:meal_category_id].blank?
-      where_hash[:author_id] = params[:author_id] unless params[:author_id].blank?
-      where_hash[:region_id] = params[:region_id] unless params[:region_id].blank?
-      @recipes = where_hash.any? ? Recipe.where(where_hash) : Recipe.all
-      respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @recipes }
-    end
+
+  # this was my hard earned code... now discontinued and replaced by ransack
+  # def index
+  #     where_hash = {}
+  #     where_hash[:meal_category_id] = params[:meal_category_id] unless params[:meal_category_id].blank?
+  #     where_hash[:author_id] = params[:author_id] unless params[:author_id].blank?
+  #     where_hash[:region_id] = params[:region_id] unless params[:region_id].blank?
+  #     @recipes = where_hash.any? ? Recipe.where(where_hash) : Recipe.all
+  #     respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @recipes }
+  #   end
+  # end
+
+ def index
+    @q = Recipe.search(params[:q])
+    @recipes = @q.result(distinct: true)
   end
+
+def search
+    index
+    render :index
+  end
+
+
+
 
   # GET /recipes/1
   # GET /recipes/1.json

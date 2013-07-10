@@ -4,6 +4,15 @@
 <% end %>
 <br>
 
+<%= search_form_for @q, url: search_recipes_path, html: {method: :post} do |f| %>
+      <p>
+        <%= f.label :name_or_author_name_or_region_name_or_meal_category_name_or_ingredients_name_or_ingredients_ingredient_category_name_cont, "Search" %>
+        <%= f.text_field :name_or_author_name_or_region_name_or_meal_category_name_or_ingredients_name_or_ingredients_ingredient_category_name_cont  %>
+      </p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+
 <div class="row">
     <div class="span8">
 
