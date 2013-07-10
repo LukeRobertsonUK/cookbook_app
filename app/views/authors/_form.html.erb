@@ -20,14 +20,14 @@
     <%= f.label :email_address, "Email" %>
     <%= f.text_field :email_address %>
 
-    <%= f.label :image, "Photo" %>
-    <%= f.text_field :image %>
+    <%= f.label :author_image, "Photo" %>
+    <%= f.file_field  :author_image %>
 
 
     <% if @author.persisted? %>
-      <% if @author.image.size >0%>
-      <%=image_tag @author.image, size: '300x300', class: "author_photo_small" %>
-        <%end%>
+      <% unless @author.author_image.size.blank?%>
+      <%= image_tag @author.author_image.thumb.url, class: "author_photo_small " %>
+          <% end %>
     <% end %>
 
 

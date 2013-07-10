@@ -1,6 +1,8 @@
 class Author < ActiveRecord::Base
-  attr_accessible :biography, :email_address, :name, :image
+  attr_accessible :biography, :email_address, :name, :image, :author_image
   has_many :recipes
+ mount_uploader :author_image, AuthorImageUploader
+
 
 validates :name, presence: true
 validates :name, uniqueness: true

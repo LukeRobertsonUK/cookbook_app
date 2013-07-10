@@ -1,5 +1,5 @@
 class Recipe < ActiveRecord::Base
-  attr_accessible :image, :instructions, :meal_category_id, :name, :occaision, :region_id, :ingredient_ids, :author_id, :ingredients, :ingredients_recipes
+  attr_accessible :image, :instructions, :meal_category_id, :name, :occaision, :region_id, :ingredient_ids, :author_id, :ingredients, :ingredients_recipes, :recipe_image
   belongs_to :region
   belongs_to :meal_category
   belongs_to :author
@@ -7,7 +7,7 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, :through => :ingredients_recipes
 
   accepts_nested_attributes_for :ingredients
-
+  mount_uploader :recipe_image, RecipeImageUploader
   validates :name, uniqueness: true
   validates :name, presence: true
   validates :author, presence: true

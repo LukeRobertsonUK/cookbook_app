@@ -25,15 +25,14 @@
 
     <%= f.label :occaision, "Enjoy it..." %>
     <%= f.text_field :occaision, class: "input_text" %>
-
-    <%= f.label :image %>
-    <%= f.text_field :image %>
+    <%= f.label :recipe_image %>
+    <%= f.file_field  :recipe_image %>
     <%= f.label :author_id, "Author" %>
     <%= f.select(:author_id, Author.all.map {|a| [a.name, a.id]}) %>
     <% if @recipe.persisted? %>
-      <% if @recipe.image.size > 0 %>
-      <%=image_tag @recipe.image, size: '300x300', class: "photo_small" %>
-      <% end %>
+    <% unless @recipe.recipe_image.blank? %>
+          <%= image_tag @recipe.recipe_image.thumb.url, class: "photo_small " %>
+          <% end %>
     <% end %>
 
 
