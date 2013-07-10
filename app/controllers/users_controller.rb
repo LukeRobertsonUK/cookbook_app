@@ -11,6 +11,7 @@ load_and_authorize_resource
   def create
     @user = User.new(params[:user])
     if @user.save
+      session[:user_id] = @user.id
       flash[:welcome] = "Thanks for registering. You can now access our tasty recipes!"
       redirect_to recipes_path
     else
